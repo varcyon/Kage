@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int damage = 1;
+    public int damage = 5;
 
     [SerializeField] bool isStaticArea;
 
@@ -17,7 +17,7 @@ public class Damager : MonoBehaviour
             Damageable controller = other.GetComponent<Damageable>();
             if (controller != null)
             {
-                controller.TakeDamage(-damage,0);
+                controller.TakeDamage(damage,0);
             }
         }
     }
@@ -28,7 +28,7 @@ public class Damager : MonoBehaviour
         Damageable controller = other.GetComponent<Damageable>();
         if (controller != null)
         {
-            controller.TakeDamage(-damage,0);
+            controller.TakeDamage(damage,0);
         }
         
     }

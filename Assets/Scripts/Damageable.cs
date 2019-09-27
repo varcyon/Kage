@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,6 @@ public class Damageable : physticsObject
     public int maxHealth = 5;
     public int currentHealth;
     public int health { get { return currentHealth; } }
-    public float timeInvincible = 2.0f;
-    public bool isInvincible;
-    public float invincibleTimer;
     public float launch = 1;
     public Vector2 launchPower;
     public bool recovering;
@@ -22,7 +20,6 @@ public class Damageable : physticsObject
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
-        currentHealth = 1;
     }
     void FixedUpdate()
     {
@@ -35,16 +32,26 @@ public class Damageable : physticsObject
                 recovering = false;
             }
         }
+
+
+        if(health <=0){
+            Die();
+        }
     }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     public void TakeDamage(int amount, int launchDirection)
     {
-        if (!recovering)
-        {
+        if(!recovering){
             velocity.y = launchPower.y;
             launch = launchDirection * (launchPower.x);
             recoveryCounter = 0;
             recovering = true;
-            currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+            currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
             Debug.Log("Ouch!");
             //animator.SetTrigger("Hurt");
         }

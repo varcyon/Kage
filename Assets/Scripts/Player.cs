@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayterPlatformController : physticsObject
+public class Player : physticsObject
 {
     public float maxSpeed = 8;
     public float jumpTakeOffSpeed = 25;
@@ -11,7 +11,17 @@ public class PlayterPlatformController : physticsObject
     Damageable damageable;
     bool lookRight = true;
     public GameObject attackHit;
-
+    int numOfJumps = 0;
+    int maxJumps = 2;
+    private static Player instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null) instance = GameObject.FindObjectOfType<Player>();
+            return instance;
+        }
+    }
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,9 +44,15 @@ public class PlayterPlatformController : physticsObject
         }
 
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = jumpTakeOffSpeed;
+            if (grounded) { numOfJumps = 0; }
+            if (grounded || numOfJumps < maxJumps)
+            {
+                velocity.y = 0;
+                velocity.y = jumpTakeOffSpeed;
+                numOfJumps += 1;
+            }
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -45,6 +61,7 @@ public class PlayterPlatformController : physticsObject
                 velocity.y = velocity.y * .5f;
             }
         }
+
 
         if (Input.GetButtonDown("Attack"))
         {
