@@ -74,17 +74,17 @@ public class Damageable : physticsObject
                 parent.GetComponent<Player>().enabled = false;
                 parent.GetComponent<CapsuleCollider2D>().enabled = false;
 
-                Instantiate(head, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(Feet, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(Feet, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(leg, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(leg, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(shoulder, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(shoulder, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(Lhand, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(Rhand, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(torsoU, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
-                Instantiate(torsoL, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(head, parent.transform.position, Quaternion.identity);
+                Instantiate(Feet, parent.transform.position, Quaternion.identity);
+                Instantiate(Feet, parent.transform.position, Quaternion.identity);
+                Instantiate(leg, parent.transform.position, Quaternion.identity);
+                Instantiate(leg, parent.transform.position, Quaternion.identity);
+                Instantiate(shoulder, parent.transform.position, Quaternion.identity);
+                Instantiate(shoulder, parent.transform.position, Quaternion.identity);
+                Instantiate(Lhand, parent.transform.position, Quaternion.identity);
+                Instantiate(Rhand, parent.transform.position, Quaternion.identity);
+                Instantiate(torsoU, parent.transform.position, Quaternion.identity);
+                Instantiate(torsoL, parent.transform.position, Quaternion.identity);
 
             }
             else
