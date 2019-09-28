@@ -15,6 +15,18 @@ public class Damageable : physticsObject
     public float recoveryTime = 2;
     public float launchRecovery;
     public Animator animator;
+    public GameObject parent;
+
+    public GameObject head;
+    public GameObject Feet;
+    public GameObject leg;
+    public GameObject Lhand;
+    public GameObject Rhand;
+    public GameObject torsoU;
+    public GameObject torsoL;
+    public GameObject shoulder;
+
+
 
     void Start()
     {
@@ -34,9 +46,7 @@ public class Damageable : physticsObject
         }
 
 
-        if(health <=0){
-            Die();
-        }
+
     }
 
     private void Die()
@@ -46,7 +56,8 @@ public class Damageable : physticsObject
 
     public void TakeDamage(int amount, int launchDirection)
     {
-        if(!recovering){
+        if (!recovering)
+        {
             velocity.y = launchPower.y;
             launch = launchDirection * (launchPower.x);
             recoveryCounter = 0;
@@ -54,6 +65,32 @@ public class Damageable : physticsObject
             currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
             Debug.Log("Ouch!");
             //animator.SetTrigger("Hurt");
+        }
+        if (health <= 0)
+        {
+            if (parent.layer == 8)
+            {
+                parent.GetComponent<SpriteRenderer>().enabled = false;
+                parent.GetComponent<Player>().enabled = false;
+                parent.GetComponent<CapsuleCollider2D>().enabled = false;
+
+                Instantiate(head, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(Feet, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(Feet, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(leg, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(leg, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(shoulder, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(shoulder, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(Lhand, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(Rhand, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(torsoU, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+                Instantiate(torsoL, new Vector2(parent.transform.position.x, parent.transform.position.y), Quaternion.identity);
+
+            }
+            else
+            {
+                Die();
+            }
         }
     }
 

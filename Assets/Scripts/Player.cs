@@ -49,6 +49,7 @@ public class Player : physticsObject
             if (grounded) { numOfJumps = 0; }
             if (grounded || numOfJumps < maxJumps)
             {
+                if (!grounded) { animator.Play("JumpHold", -1, 0f); }
                 velocity.y = 0;
                 velocity.y = jumpTakeOffSpeed;
                 numOfJumps += 1;
@@ -61,6 +62,16 @@ public class Player : physticsObject
                 velocity.y = velocity.y * .5f;
             }
         }
+
+        // if (Input.GetButtonDown("Crouch"))
+        // {
+        //     animator.SetBool("Crouch", true);
+        //     targetVelocity = move / maxSpeed;
+        // }
+        // else if (Input.GetButtonUp("Crouch"))
+        // {
+        //     animator.SetBool("Crouch", false);
+        // }
 
 
         if (Input.GetButtonDown("Attack"))
