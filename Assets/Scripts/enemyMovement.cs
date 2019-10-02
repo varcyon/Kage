@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMovement : physticsObject
+public class enemyMovement : PhysicsObject
 {
     Damageable damageable;
     // Start is called before the first frame update
@@ -14,11 +14,10 @@ public class enemyMovement : physticsObject
     // Update is called once per frame
     void Update()
     {
-       
+
     }
-    protected override void ComputerVelocity()
+    protected override void ComputeVelocity()
     {
-                damageable.launch += (0 - damageable.launch) * Time.deltaTime * damageable.launchRecovery;
 
     }
 }

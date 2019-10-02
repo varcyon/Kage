@@ -27,7 +27,8 @@ public class AttackHit : MonoBehaviour {
 				launchDirection = -1;
 			}
 			int dmg = parent.GetComponent<Damager>().damage;
-			other.GetComponent<Damageable>().TakeDamage(dmg, launchDirection);
+			Vector2 launchPower = parent.GetComponent<Damager>().launchPower;
+			other.GetComponent<Damageable>().TakeDamage(dmg, launchDirection,launchPower);
 			
 		}
 		

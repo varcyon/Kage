@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : physticsObject
+public class Player : PhysicsObject
 {
     public float maxSpeed = 8;
     public float jumpTakeOffSpeed = 25;
@@ -13,6 +13,7 @@ public class Player : physticsObject
     public GameObject attackHit;
     int numOfJumps = 0;
     int maxJumps = 2;
+
     private static Player instance;
     public static Player Instance
     {
@@ -29,11 +30,10 @@ public class Player : physticsObject
         damageable = GetComponent<Damageable>();
     }
 
-    protected override void ComputerVelocity()
+    protected override void ComputeVelocity()
     {
 
         Vector2 move = Vector2.zero;
-        damageable.launch += (0 - damageable.launch) * Time.deltaTime * damageable.launchRecovery;
         move.x = Input.GetAxis("Horizontal");
         if (move.x > 0f && !lookRight || move.x < 0f && lookRight)
         {
@@ -63,15 +63,7 @@ public class Player : physticsObject
             }
         }
 
-        // if (Input.GetButtonDown("Crouch"))
-        // {
-        //     animator.SetBool("Crouch", true);
-        //     targetVelocity = move / maxSpeed;
-        // }
-        // else if (Input.GetButtonUp("Crouch"))
-        // {
-        //     animator.SetBool("Crouch", false);
-        // }
+
 
 
         if (Input.GetButtonDown("Attack"))

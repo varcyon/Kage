@@ -6,7 +6,7 @@ public class Damager : MonoBehaviour
 {
     // Start is called before the first frame update
     public int damage = 5;
-
+    public Vector2 launchPower;
     [SerializeField] bool isStaticArea;
 
 
@@ -17,7 +17,7 @@ public class Damager : MonoBehaviour
             Damageable controller = other.GetComponent<Damageable>();
             if (controller != null)
             {
-                controller.TakeDamage(damage,0);
+                controller.TakeDamage(damage,0,launchPower);
             }
         }
     }
@@ -28,7 +28,7 @@ public class Damager : MonoBehaviour
         Damageable controller = other.GetComponent<Damageable>();
         if (controller != null)
         {
-            controller.TakeDamage(damage,0);
+            controller.TakeDamage(damage,0,launchPower);
         }
         
     }

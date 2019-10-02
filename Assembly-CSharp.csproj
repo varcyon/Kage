@@ -113,7 +113,7 @@
      <Compile Include="Assets\Scripts\DamageZone.cs" />
      <Compile Include="Assets\Scripts\enemyMovement.cs" />
      <Compile Include="Assets\Scripts\HealthCollectable.cs" />
-     <Compile Include="Assets\Scripts\physticsObject.cs" />
+     <Compile Include="Assets\Scripts\physicsObject.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Art\Ninja Files\Read Me.txt" />
      <None Include="Assets\Cinemachine\ReleaseNotes.txt" />

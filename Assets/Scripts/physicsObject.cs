@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class physticsObject : MonoBehaviour
-{
-    public float minGroundNormalY = .65f;
+public class PhysicsObject : MonoBehaviour {
+
+	public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
     protected Vector2 velocity;
     protected Rigidbody2D rb2d;
@@ -30,10 +30,10 @@ public class physticsObject : MonoBehaviour
     void Update()
     {
         targetVelocity = Vector2.zero;
-        ComputerVelocity();
+        ComputeVelocity();
     }
 
-    protected virtual void ComputerVelocity()
+    protected virtual void ComputeVelocity()
     {
 
     }
@@ -84,5 +84,5 @@ public class physticsObject : MonoBehaviour
         }
         rb2d.position = rb2d.position + move.normalized * distance;
     }
-}
 
+}

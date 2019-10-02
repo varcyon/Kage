@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damageable : physticsObject
+public class Damageable : PhysicsObject
 {
     public int maxHealth = 5;
     public int currentHealth;
     public int health { get { return currentHealth; } }
-    public float launch = 1;
-    public Vector2 launchPower;
+
     public bool recovering;
     public float recoveryCounter;
     public float recoveryTime = 2;
-    public float launchRecovery;
     public Animator animator;
     public GameObject parent;
+
 
     public GameObject head;
     public GameObject Feet;
@@ -43,6 +42,7 @@ public class Damageable : physticsObject
                 recoveryCounter = 0;
                 recovering = false;
             }
+
         }
 
 
@@ -54,17 +54,18 @@ public class Damageable : physticsObject
         Destroy(gameObject);
     }
 
-    public void TakeDamage(int amount, int launchDirection)
+    public void TakeDamage(int amount, int launchDirection, Vector2 launchPower)
     {
+
         if (!recovering)
         {
-            velocity.y = launchPower.y;
-            launch = launchDirection * (launchPower.x);
             recoveryCounter = 0;
             recovering = true;
             currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+            parent.GetComponent<Rigidbody2D>().velocity = new Vector2(launchPower.x* launchDirection, launchPower.y);
             Debug.Log("Ouch!");
-            //animator.SetTrigger("Hurt");
+            animator.SetTrigger("Hurt");
+
         }
         if (health <= 0)
         {
