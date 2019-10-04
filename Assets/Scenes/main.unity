@@ -176,7 +176,7 @@ PrefabInstance:
     - target: {fileID: 644229030636965330, guid: 931adb5ab787b2f43a413ecd2a343bf1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -351.06
+      value: -343.74
       objectReference: {fileID: 0}
     - target: {fileID: 644229030636965330, guid: 931adb5ab787b2f43a413ecd2a343bf1,
         type: 3}
@@ -253,7 +253,8 @@ PrefabInstance:
       propertyPath: layerMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8448896076013317571, guid: 931adb5ab787b2f43a413ecd2a343bf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 931adb5ab787b2f43a413ecd2a343bf1, type: 3}
 --- !u!1001 &221516370
 PrefabInstance:
@@ -375,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 1247955500811096165, guid: 95e08a7220620534abb6afcf8bd525e1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.18
+      value: -10.93
       objectReference: {fileID: 0}
     - target: {fileID: 1247955500811096165, guid: 95e08a7220620534abb6afcf8bd525e1,
         type: 3}
@@ -1201,6 +1202,44 @@ Transform:
   m_Father: {fileID: 835010701}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1297231740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4303802809281514316, guid: 931adb5ab787b2f43a413ecd2a343bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 92732577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1297231741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297231740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc18a2c6932fe242b67458010ce5596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  grounded: 0
+  followRange: 20
+  turnBackRange: 3.97
+  ledgeDetection: 2.23
+  directionSmooth: 1
+  direction: 1
+  playerDifference: 0
+  changeDirectionEase: 1
+  followPlayer: 0
+  maxSpeed: 5
+  jumpTakeOffSpeed: 20
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  ledgeLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayCastOffset: {x: 2, y: -2}
 --- !u!1 &1439015633
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PhysicsObject : MonoBehaviour {
 
-	public float minGroundNormalY = .65f;
-    public float gravityModifier = 1f;
+	 protected float minGroundNormalY = .65f;
+    [SerializeField] protected float gravityModifier = 1f;
     protected Vector2 velocity;
     protected Rigidbody2D rb2d;
     protected const float minMoveDistance = 0.001f;
@@ -13,7 +13,7 @@ public class PhysicsObject : MonoBehaviour {
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     protected List<RaycastHit2D> hitbufferList = new List<RaycastHit2D>(16);
     protected const float shellRadius = 0.01f;
-    public bool grounded;
+    protected bool grounded;
     protected Vector2 groundNormal;
     protected Vector2 targetVelocity;
     void OnEnable()

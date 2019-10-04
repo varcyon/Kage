@@ -110,7 +110,7 @@
      <Compile Include="Assets\Scripts\Damageable.cs" />
      <Compile Include="Assets\Scripts\Damager.cs" />
      <Compile Include="Assets\Scripts\DamageZone.cs" />
-     <Compile Include="Assets\Scripts\enemyMovement.cs" />
+     <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\HealthCollectable.cs" />
      <Compile Include="Assets\Scripts\PhysicsObject.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
