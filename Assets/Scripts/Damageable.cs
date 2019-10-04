@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damageable : PhysicsObject
+public class Damageable : MonoBehaviour
 {
     public int maxHealth = 5;
     public int currentHealth;
@@ -42,7 +42,6 @@ public class Damageable : PhysicsObject
                 recoveryCounter = 0;
                 recovering = false;
             }
-
         }
 
 
@@ -62,9 +61,9 @@ public class Damageable : PhysicsObject
             recoveryCounter = 0;
             recovering = true;
             currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-            parent.GetComponent<Rigidbody2D>().velocity = new Vector2(launchPower.x* launchDirection, launchPower.y);
-            Debug.Log("Ouch!");
             animator.SetTrigger("Hurt");
+            parent.GetComponent<Rigidbody2D>().AddForce(new Vector2(launchPower.x*launchDirection, launchPower.y));
+            
 
         }
         if (health <= 0)
