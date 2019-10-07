@@ -16,7 +16,9 @@ public class EnemyController : PhysicsObject
     float playerDifference;
     float changeDirectionEase = 2f;
     bool followPlayer;
-    [SerializeField] float maxSpeed = 7;
+    [SerializeField] float maxSpeed = 2f;
+    [SerializeField] float aggressiveSpeedMultiplayer = 2f;
+
     [SerializeField] int jumpTakeOffSpeed = 20;
     RaycastHit2D ground;
     RaycastHit2D rightWall;
@@ -52,15 +54,19 @@ public class EnemyController : PhysicsObject
             move.x = 1 * directionSmooth;
             ground = Physics2D.Raycast(transform.position, new Vector2(0, -1), 2.2f, groundLayerMask);
             Debug.DrawRay(transform.position, new Vector2(0, -2.2f), Color.blue);
+
             if (enemyType == EnemyType.Aggressive)
             {
                 if ((Mathf.Abs(playerDifference) < followRange))
                 {
                     followPlayer = true;
+                    move.x = aggressiveSpeedMultiplayer * directionSmooth;
                 }
                 else
                 {
                     followPlayer = false;
+                    move.x = 1 * directionSmooth;
+
                 }
             }
 
@@ -136,16 +142,16 @@ public class EnemyController : PhysicsObject
             targetVelocity = move * maxSpeed;
 
         }
-        
+
 
     }
     public void Jump()
+    {
+        if (grounded)
         {
-            if (grounded)
-            {
-                velocity.y = jumpTakeOffSpeed;
-            }
+            velocity.y = jumpTakeOffSpeed;
         }
+    }
 }
 
 

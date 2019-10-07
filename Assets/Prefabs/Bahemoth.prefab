@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 5034482808554783897}
   - component: {fileID: 1407374280}
   - component: {fileID: 1297231741}
+  - component: {fileID: 6347175953358213303}
   m_Layer: 0
   m_Name: Bahemoth
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,12 +191,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc18a2c6932fe242b67458010ce5596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityModifier: 1
+  enemyType: 1
   followRange: 20
-  turnBackRange: 3
-  ledgeDetectionDepth: 2.09
-  ledgeDetectionWidth: 2.42
-  maxSpeed: 5
-  jumpTakeOffSpeed: 20
+  turnBackRange: 4
+  ledgeDetectionDepth: 2
+  ledgeDetectionWidth: 2.5
+  maxSpeed: 3
+  aggressiveSpeedMultiplayer: 2
+  jumpTakeOffSpeed: 25
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &6347175953358213303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303802809281514316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0c3b9508d0ff0459959915d5a3f9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  launchPower: {x: 500, y: 500}
+  isStaticArea: 0

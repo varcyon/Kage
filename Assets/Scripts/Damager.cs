@@ -12,12 +12,15 @@ public class Damager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (isStaticArea)
+        if (other.tag == "Player")
         {
-            Damageable controller = other.GetComponent<Damageable>();
-            if (controller != null)
+            if (isStaticArea)
             {
-                controller.TakeDamage(damage,0,launchPower);
+                Damageable controller = other.GetComponent<Damageable>();
+                if (controller != null)
+                {
+                    controller.TakeDamage(damage, 0, launchPower);
+                }
             }
         }
     }
@@ -25,11 +28,14 @@ public class Damager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Damageable controller = other.GetComponent<Damageable>();
-        if (controller != null)
+        if (other.tag == "Player")
         {
-            controller.TakeDamage(damage,0,launchPower);
+            Damageable controller = other.GetComponent<Damageable>();
+            if (controller != null)
+            {
+                controller.TakeDamage(damage, 0, launchPower);
+            }
         }
-        
+
     }
 }
