@@ -70,7 +70,14 @@ public class Player : PhysicsObject
         {
             animator.SetTrigger("Attack");
         }
-
+        if (Input.GetButtonDown("HeavyAttack"))
+        {
+            animator.SetTrigger("HeavyAttack");
+        }
+        if (Input.GetButtonDown("Ranged"))
+        {
+            animator.SetTrigger("Ranged");
+        }
 
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("VelocityX", Mathf.Abs(velocity.x / maxSpeed));

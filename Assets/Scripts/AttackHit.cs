@@ -8,6 +8,9 @@ public class AttackHit : MonoBehaviour {
 	[SerializeField] AttacksWhat attacksWhat;
 	private int launchDirection = 1;
 	[SerializeField] private GameObject parent;
+	[SerializeField]bool heavyAttack;
+	[SerializeField]bool rangedAttack;
+	[SerializeField]bool closeAttack;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +30,15 @@ public class AttackHit : MonoBehaviour {
 				launchDirection = -1;
 			}
 			int dmg = parent.GetComponent<Damager>().damage;
+			if(heavyAttack){
+				dmg = dmg *4;
+			}
+			if(rangedAttack){
+				dmg = dmg*1;
+			}
+			if(closeAttack){
+				dmg = dmg * 2;
+			}
 			Vector2 launchPower = parent.GetComponent<Damager>().launchPower;
 			other.GetComponent<Damageable>().TakeDamage(dmg, launchDirection,launchPower);
 			
