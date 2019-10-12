@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Spine;
+using Spine.Unity;
 
 public class Player : PhysicsObject
 {
@@ -13,7 +16,7 @@ public class Player : PhysicsObject
     public GameObject attackHit;
     int numOfJumps = 0;
     int maxJumps = 2;
-
+public CameraEffects cameraEffect;
     private static Player instance;
     public static Player Instance
     {

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7443963243304177685}
   - component: {fileID: 7443963243304177684}
-  - component: {fileID: 7443963243304177687}
   - component: {fileID: 7443963243304177690}
+  - component: {fileID: 1242938001}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -82,19 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7443963243304177687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7443963243304177686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14475a72372fe2e43a6f5072396d8c3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: -1
 --- !u!60 &7443963243304177690
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,18 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5}
       - {x: -0.4330127, y: -0.25000003}
       - {x: 0.43301272, y: -0.24999996}
+--- !u!114 &1242938001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443963243304177686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0c3b9508d0ff0459959915d5a3f9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  launchPower: {x: 0, y: 0}
+  isStaticArea: 1

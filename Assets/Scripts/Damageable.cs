@@ -12,8 +12,10 @@ public class Damageable : MonoBehaviour
     public bool recovering;
     public float recoveryCounter;
     public float recoveryTime = 2;
-    public Animator animator;
+     Animator animator;
     public GameObject parent;
+
+    [SerializeField] GameObject deathParticles;
 
 
     public GameObject head;
@@ -50,6 +52,8 @@ public class Damageable : MonoBehaviour
 
     private void Die()
     {
+        deathParticles.SetActive(true);
+        deathParticles.transform.parent = transform.parent;
         Destroy(gameObject);
     }
 
@@ -58,6 +62,9 @@ public class Damageable : MonoBehaviour
 
         if (!recovering)
         {
+            // if(parent.layer == 8){
+            //     Player.Instance.cameraEffect.Shake (100f,1f);
+            // }
             recoveryCounter = 0;
             recovering = true;
             currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);

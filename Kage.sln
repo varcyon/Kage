@@ -1,9 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 16
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{2FA40986-7FD4-E021-12DA-13E58B38FBAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity", "spine-unity.csproj", "{C5CC8E01-7D1B-AF39-AA28-587D07C5F874}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{DA7CF5D6-6B1E-3792-F51A-75E07F4A9D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{6722DE0D-8CC7-3EBB-153E-94F3B5E0E123}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,18 @@ Global
 		{2FA40986-7FD4-E021-12DA-13E58B38FBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA40986-7FD4-E021-12DA-13E58B38FBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FA40986-7FD4-E021-12DA-13E58B38FBAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5CC8E01-7D1B-AF39-AA28-587D07C5F874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5CC8E01-7D1B-AF39-AA28-587D07C5F874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5CC8E01-7D1B-AF39-AA28-587D07C5F874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5CC8E01-7D1B-AF39-AA28-587D07C5F874}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA7CF5D6-6B1E-3792-F51A-75E07F4A9D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA7CF5D6-6B1E-3792-F51A-75E07F4A9D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7CF5D6-6B1E-3792-F51A-75E07F4A9D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7CF5D6-6B1E-3792-F51A-75E07F4A9D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6722DE0D-8CC7-3EBB-153E-94F3B5E0E123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6722DE0D-8CC7-3EBB-153E-94F3B5E0E123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6722DE0D-8CC7-3EBB-153E-94F3B5E0E123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6722DE0D-8CC7-3EBB-153E-94F3B5E0E123}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
