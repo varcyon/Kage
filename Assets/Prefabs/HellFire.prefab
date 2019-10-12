@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7108418898976374673}
   - component: {fileID: 311614506031437320}
   - component: {fileID: 5891745929635829355}
+  - component: {fileID: 1449631077}
+  - component: {fileID: 3863730356372188196}
   m_Layer: 0
   m_Name: HellFire
   m_TagString: Untagged
@@ -43,7 +45,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -57,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5891745929635829355
 MonoBehaviour:
@@ -71,7 +73,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2960338658f964b8db3f9bd1632396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityModifier: 1
+  gravityModifier: 3
+--- !u!50 &1449631077
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649129910776814816}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!114 &3863730356372188196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649129910776814816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79840c10f311a0d438adc4b11fe56557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicAmount: 1
+  magicType: 
 --- !u!1 &1593775570621481522
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 1593775570621481522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7108418898976374673}
   m_RootOrder: 0

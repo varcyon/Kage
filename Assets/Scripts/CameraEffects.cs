@@ -14,6 +14,7 @@ public class CameraEffects : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		Player.Instance.cameraEffect = this;
 		virtualCamera = GetComponent<CinemachineVirtualCamera> ();
 		multiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin> ();

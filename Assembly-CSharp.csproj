@@ -97,6 +97,8 @@
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineMixer.cs" />
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineShot.cs" />
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineTrack.cs" />
+     <Compile Include="Assets\Magic.cs" />
+     <Compile Include="Assets\MagicPickup.cs" />
      <Compile Include="Assets\Scripts\AppCommands.cs" />
      <Compile Include="Assets\Scripts\AttackHit.cs" />
      <Compile Include="Assets\Scripts\CameraEffects.cs" />

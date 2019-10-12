@@ -11,26 +11,32 @@ public class Player : PhysicsObject
     public float jumpTakeOffSpeed = 25;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    Magic magic;
     Damageable damageable;
     bool lookRight = true;
     public GameObject attackHit;
     int numOfJumps = 0;
     int maxJumps = 2;
-public CameraEffects cameraEffect;
-    private static Player instance;
-    public static Player Instance
-    {
-        get
-        {
-            if (instance == null) instance = GameObject.FindObjectOfType<Player>();
-            return instance;
+    public CameraEffects cameraEffect;
+    
+
+    
+    public static Player Instance {get; set;}
+    void MakeSingleton(){
+        if(Instance == null){
+            Instance = this;
+        } else if(Instance != this){
+            Destroy(gameObject);
         }
     }
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        magic = GetComponent<Magic>();
+         MakeSingleton();
     }
 
     protected override void ComputeVelocity()
