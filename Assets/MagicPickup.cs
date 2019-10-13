@@ -6,6 +6,8 @@ public class MagicPickup : MonoBehaviour
 {
     [SerializeField] int magicAmount = 1;
     [SerializeField] string magicType;
+   [SerializeField] float chasePlayer =10f;
+   [SerializeField] int chaseSpeed = 30;
     void OnTriggerEnter2D(Collider2D other)
     {
         Magic magic = other.GetComponent<Magic>();
@@ -31,12 +33,17 @@ public class MagicPickup : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-        Rigidbody2D rg = GetComponent<Rigidbody2D>();
-        rg.AddForce(new Vector2(transform.position.x * UnityEngine.Random.Range(-10,10),transform.position.y * UnityEngine.Random.Range(50,100)));
-    }
+
      void FixedUpdate() {
+        if((Player.Instance.gameObject.transform.position.x - transform.position.x) < chasePlayer){
+            transform.position = Vector3.MoveTowards(transform.position, Player.Instance.gameObject.transform.position, Time.deltaTime * chaseSpeed);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, chasePlayer);
+        
     }
 }
 

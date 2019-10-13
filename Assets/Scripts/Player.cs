@@ -7,6 +7,8 @@ using Spine.Unity;
 
 public class Player : PhysicsObject
 {
+    //PlayerControls controls;
+    //Vector2 move = new Vector2();
     public float maxSpeed = 8;
     public float jumpTakeOffSpeed = 25;
     private SpriteRenderer spriteRenderer;
@@ -18,31 +20,49 @@ public class Player : PhysicsObject
     int numOfJumps = 0;
     int maxJumps = 2;
     public CameraEffects cameraEffect;
-    
 
-    
-    public static Player Instance {get; set;}
-    void MakeSingleton(){
-        if(Instance == null){
+
+
+    public static Player Instance { get; set; }
+    void MakeSingleton()
+    {
+        if (Instance == null)
+        {
             Instance = this;
-        } else if(Instance != this){
+        }
+        else if (Instance != this)
+        {
             Destroy(gameObject);
         }
     }
 
     void Awake()
     {
+        // controls = new PlayerControls();
+        // controls.GamePlay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        // controls.GamePlay.Move.canceled += ctx => move = Vector2.zero;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
         magic = GetComponent<Magic>();
-         MakeSingleton();
+        MakeSingleton();
     }
 
+    // void OnEnable()
+    // {
+    //     controls.GamePlay.Enable();
+    // }
+
+    // void OnDisable()
+    // {
+    //     controls.GamePlay.Disable();
+    // }
     protected override void ComputeVelocity()
     {
 
+
         Vector2 move = Vector2.zero;
+
         move.x = Input.GetAxis("Horizontal");
         if (move.x > 0f && !lookRight || move.x < 0f && lookRight)
         {

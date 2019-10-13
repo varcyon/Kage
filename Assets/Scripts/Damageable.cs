@@ -21,6 +21,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] GameObject purgatoryWaterFragment;
     [SerializeField] GameObject hellFireFragment;
     [SerializeField] GameObject heavenMetalFragment;
+    [SerializeField] GameObject healthContainer;
 
 
     GameObject head;
@@ -62,24 +63,23 @@ public class Damageable : MonoBehaviour
         int PWamount = UnityEngine.Random.Range(1, 5);
         int HFamount = UnityEngine.Random.Range(1, 5);
         int HMamount = UnityEngine.Random.Range(1, 5);
+        int HealthMagic = UnityEngine.Random.Range(0,2);
         for (int i = 0; i < PWamount; i++)
         {
-             GameObject clone = Instantiate(purgatoryWaterFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-5,5),transform.position.y + UnityEngine.Random.Range(0,5)), Quaternion.identity);
-           //  clone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100);
+            Instantiate(purgatoryWaterFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-10, 10), transform.position.y + UnityEngine.Random.Range(0, 10)), Quaternion.identity);
         }
         for (int i = 0; i < HFamount; i++)
         {
-             GameObject clone = Instantiate(hellFireFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-5,5),transform.position.y + UnityEngine.Random.Range(0,5)), Quaternion.identity);
-           //  clone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100);
+            Instantiate(hellFireFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-10, 10), transform.position.y + UnityEngine.Random.Range(0, 10)), Quaternion.identity);
         }
         for (int i = 0; i < HMamount; i++)
         {
-          GameObject clone = Instantiate(heavenMetalFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-5,5),transform.position.y + UnityEngine.Random.Range(0,5)), Quaternion.identity);
-         // clone.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100);
-          
+            Instantiate(heavenMetalFragment, new Vector2(transform.position.x + UnityEngine.Random.Range(-10, 10), transform.position.y + UnityEngine.Random.Range(0, 10)), Quaternion.identity);
         }
-
-
+        for (int i = 0; i < HealthMagic; i++)
+        {
+            Instantiate(healthContainer, new Vector2(transform.position.x + UnityEngine.Random.Range(-10, 10), transform.position.y + UnityEngine.Random.Range(0, 10)), Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 
@@ -103,23 +103,7 @@ public class Damageable : MonoBehaviour
         {
             if (parent.layer == 8)
             {
-                parent.GetComponent<SpriteRenderer>().enabled = false;
-                parent.GetComponent<Player>().enabled = false;
-                parent.GetComponent<CapsuleCollider2D>().enabled = false;
-
-                // Instantiate(head, parent.transform.position, Quaternion.identity);
-                // Instantiate(Feet, parent.transform.position, Quaternion.identity);
-                // Instantiate(Feet, parent.transform.position, Quaternion.identity);
-                // Instantiate(leg, parent.transform.position, Quaternion.identity);
-                // Instantiate(leg, parent.transform.position, Quaternion.identity);
-                // Instantiate(shoulder, parent.transform.position, Quaternion.identity);
-                // Instantiate(shoulder, parent.transform.position, Quaternion.identity);
-                // Instantiate(Lhand, parent.transform.position, Quaternion.identity);
-                // Instantiate(Rhand, parent.transform.position, Quaternion.identity);
-                // Instantiate(torsoU, parent.transform.position, Quaternion.identity);
-                // Instantiate(torsoL, parent.transform.position, Quaternion.identity);
-                deathParticles.SetActive(true);
-                deathParticles.transform.parent = transform.parent;
+               StartCoroutine( PlayerDeath());
             }
             else
             {
@@ -127,7 +111,22 @@ public class Damageable : MonoBehaviour
             }
         }
     }
-
+    IEnumerator PlayerDeath()
+    {
+        parent.GetComponent<SpriteRenderer>().enabled = false;
+        parent.GetComponent<Player>().enabled = false;
+        deathParticles.SetActive(true);
+        deathParticles.transform.parent = transform.parent;
+        yield return new WaitForSeconds(5f);
+        AppCommands.Instance.resetLevel();
+        // currentHealth = maxHealth;
+        // parent.transform.position = AppCommands.Instance.playerStart.position;
+        // parent.GetComponent<SpriteRenderer>().enabled = true;
+        // parent.GetComponent<Player>().enabled = true;
+        // deathParticles.SetActive(false);
+        // deathParticles.transform.parent = parent.transform;
+        
+    }
     public void increaseHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
