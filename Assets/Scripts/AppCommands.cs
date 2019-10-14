@@ -33,12 +33,12 @@ public class AppCommands : MonoBehaviour
     }
     void Quit()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
             Application.Quit();
         }
     }
-    void PauseMenu(){
+    public void PauseMenu(){
         if(Input.GetButtonDown("Start")){
             pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
             if(gamePaused){
@@ -51,12 +51,31 @@ public class AppCommands : MonoBehaviour
             }
         }
     }
+    public void PauseMenuButton(){
+        
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+            if(gamePaused){
+                Time.timeScale =1f;
+                gamePaused = false;
+            } else{
+                Time.timeScale =0f;
+                gamePaused = true;
+                
+            }
+        
+    }
     public void resetLevel()
     {
         if (Input.GetButtonDown("Select"))
         {
             SceneManager.LoadScene("main");
         }
+    }
+    public void resetLevelButon()
+    {
+        
+            SceneManager.LoadScene("main");
+        
     }
 
 }
