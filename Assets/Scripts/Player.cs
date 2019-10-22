@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Spine;
-using Spine.Unity;
+
 
 public class Player : PhysicsObject
 {
@@ -60,7 +59,7 @@ public class Player : PhysicsObject
     protected override void ComputeVelocity()
     {
 
-
+        //////Movements
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
@@ -71,8 +70,9 @@ public class Player : PhysicsObject
             charscale.x *= -1;
             transform.localScale = charscale;
         }
+        targetVelocity = move * maxSpeed;
 
-
+        ////// Jump
         if (Input.GetButtonDown("Jump"))
         {
             if (grounded) { numOfJumps = 0; }
@@ -94,7 +94,7 @@ public class Player : PhysicsObject
 
 
 
-
+        ///// Attacks
         if (Input.GetButtonDown("Attack"))
         {
             animator.SetTrigger("Attack");
@@ -108,9 +108,9 @@ public class Player : PhysicsObject
             animator.SetTrigger("Ranged");
         }
 
+        ////// Animation
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("VelocityX", Mathf.Abs(velocity.x / maxSpeed));
-        targetVelocity = move * maxSpeed;
+        
     }
-
 }

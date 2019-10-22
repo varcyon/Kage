@@ -38,6 +38,11 @@ public class AppCommands : MonoBehaviour
             Application.Quit();
         }
     }
+
+     public void QuitButton()
+    {
+            Application.Quit();
+    }
     public void PauseMenu(){
         if(Input.GetButtonDown("Start")){
             pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
@@ -47,12 +52,10 @@ public class AppCommands : MonoBehaviour
             } else{
                 Time.timeScale =0f;
                 gamePaused = true;
-                
             }
         }
     }
     public void PauseMenuButton(){
-        
             pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
             if(gamePaused){
                 Time.timeScale =1f;
@@ -60,7 +63,6 @@ public class AppCommands : MonoBehaviour
             } else{
                 Time.timeScale =0f;
                 gamePaused = true;
-                
             }
         
     }
@@ -73,9 +75,7 @@ public class AppCommands : MonoBehaviour
     }
     public void resetLevelButon()
     {
-        
             SceneManager.LoadScene("main");
-        
     }
 
 }
