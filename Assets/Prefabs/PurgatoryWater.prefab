@@ -41,7 +41,7 @@ TrailRenderer:
   m_GameObject: {fileID: 123859108021684134}
   m_Enabled: 1
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -79,20 +79,29 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.32277745
+        value: 0.07859105
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.039759953
+        outSlope: -0.039759953
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.32291672
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.20784315, b: 1, a: 1}
-      key1: {r: 0.63999647, g: 0.70697767, b: 0.9622642, a: 1}
+      key0: {r: 0.22352943, g: 0.6, b: 0.9333334, a: 1}
+      key1: {r: 0.2901961, g: 0.6745098, b: 0.9215687, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -118,7 +127,7 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 10
+    numCornerVertices: 0
     numCapVertices: 10
     alignment: 0
     textureMode: 0
@@ -4949,8 +4958,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eccb167d20443374bb4f446f91020dd5, type: 3}
-  m_Color: {r: 0, g: 0.20784314, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5abb89ee6b15d6d47910ef01181b9feb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4988,8 +4997,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983384873625503653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.645, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0.666, y: -0.185, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 2187243068370558880}
   - {fileID: 7115967994259789832}
@@ -5036,6 +5045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityModifier: 3
+  grounded: 0
 --- !u!50 &1475958402
 Rigidbody2D:
   serializedVersion: 4
@@ -5072,4 +5082,5 @@ MonoBehaviour:
   magicAmount: 1
   magicType: 
   chasePlayer: 7
-  chaseSpeed: 15
+  chaseSpeed: 20
+  isHealth: 0

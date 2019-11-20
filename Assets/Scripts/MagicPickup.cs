@@ -6,25 +6,25 @@ public class MagicPickup : MonoBehaviour
 {
     [SerializeField] int magicAmount = 1;
     [SerializeField] string magicType;
-   [SerializeField] float chasePlayer =10f;
-   [SerializeField] int chaseSpeed = 30;
+    [SerializeField] float chasePlayer = 10f;
+    [SerializeField] int chaseSpeed = 30;
+    [SerializeField] bool isHealth;
     void OnTriggerEnter2D(Collider2D other)
     {
-        Magic magic = other.GetComponent<Magic>();
 
-        if (magic != null)
+        if (other.gameObject.tag == "Player")
         {
             magicType = gameObject.name;
             switch (magicType)
             {
                 case "PurgatoryWater(Clone)":
-                    magic.PurgatoryWater += magicAmount;
+                    Magic.Instance.PurgatoryWater += magicAmount;
                     break;
                 case "HellFire(Clone)":
-                    magic.HellFire += magicAmount;
+                    Magic.Instance.HellFire += magicAmount;
                     break;
                 case "HeavenMetal(Clone)":
-                    magic.HeavenMetal += magicAmount;
+                    Magic.Instance.HeavenMetal += magicAmount;
                     break;
                 default:
                     break;
@@ -34,16 +34,32 @@ public class MagicPickup : MonoBehaviour
         }
     }
 
-     void FixedUpdate() {
-        if((Player.Instance.gameObject.transform.position.x - transform.position.x) < chasePlayer){
-            transform.position = Vector3.MoveTowards(transform.position, Player.Instance.gameObject.transform.position, Time.deltaTime * chaseSpeed);
+    void Update()
+    {
+        if (isHealth)
+        {
+            if (Player.Instance.GetComponent<Damageable>().health < Player.Instance.GetComponent<Damageable>().maxHealth)
+            {
+                if ((Player.Instance.gameObject.transform.position.x - transform.position.x) < chasePlayer)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, Player.Instance.gameObject.transform.position, Time.deltaTime * chaseSpeed);
+                }
+            }
         }
+        if (!isHealth)
+        {
+            if ((Player.Instance.gameObject.transform.position.x - transform.position.x) < chasePlayer)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, Player.Instance.gameObject.transform.position, Time.deltaTime * chaseSpeed);
+            }
+        }
+
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chasePlayer);
-        
+
     }
 }
 

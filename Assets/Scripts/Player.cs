@@ -6,18 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Player : PhysicsObject
 {
-    //PlayerControls controls;
-    //Vector2 move = new Vector2();
+    [SerializeField] GameObject wave;
+    float waveSpeed = 10f;
+    [SerializeField] GameObject waveSpawnPoint;
     public float maxSpeed = 8;
     public float jumpTakeOffSpeed = 25;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     Magic magic;
     Damageable damageable;
-    bool lookRight = true;
+    public bool lookRight = true;
     public GameObject attackHit;
-    int numOfJumps = 0;
-    int maxJumps = 2;
+    public int numOfJumps = 0;
+    public int maxJumps = 2;
     public CameraEffects cameraEffect;
 
 
@@ -37,9 +38,6 @@ public class Player : PhysicsObject
 
     void Awake()
     {
-        // controls = new PlayerControls();
-        // controls.GamePlay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        // controls.GamePlay.Move.canceled += ctx => move = Vector2.zero;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
@@ -47,15 +45,6 @@ public class Player : PhysicsObject
         MakeSingleton();
     }
 
-    // void OnEnable()
-    // {
-    //     controls.GamePlay.Enable();
-    // }
-
-    // void OnDisable()
-    // {
-    //     controls.GamePlay.Disable();
-    // }
     protected override void ComputeVelocity()
     {
 
@@ -75,13 +64,16 @@ public class Player : PhysicsObject
         ////// Jump
         if (Input.GetButtonDown("Jump"))
         {
-            if (grounded) { numOfJumps = 0; }
-            if (grounded || numOfJumps < maxJumps)
+            if (grounded)
             {
-                if (!grounded) { animator.Play("JumpHold", -1, 0f); }
-                velocity.y = 0;
-                velocity.y = jumpTakeOffSpeed;
-                numOfJumps += 1;
+                if (grounded) { numOfJumps = 0; }
+                if (grounded || numOfJumps < maxJumps)
+                {
+                    if (!grounded) { animator.Play("JumpHold", -1, 0f); }
+                    velocity.y = 0;
+                    velocity.y = jumpTakeOffSpeed;
+                    numOfJumps += 1;
+                }
             }
         }
         else if (Input.GetButtonUp("Jump"))
@@ -97,6 +89,25 @@ public class Player : PhysicsObject
         ///// Attacks
         if (Input.GetButtonDown("Attack"))
         {
+            if (Magic.Instance.PurgatoryWaterWeapon[0] > 0)
+            {
+                int chance = Random.Range(1,6);
+                if (chance == 1)
+                {
+                    GameObject waveObj = Instantiate(wave, waveSpawnPoint.transform.position, transform.rotation);
+                    if (lookRight)
+                    {
+                        waveObj.GetComponent<WaveController>().goRight = true;
+
+                    }
+                    else
+                    {
+                        waveObj.GetComponent<WaveController>().goRight = false;
+                        waveObj.GetComponentInChildren<SpriteRenderer>().flipX = true;
+
+                    }
+                }
+            }
             animator.SetTrigger("Attack");
         }
         if (Input.GetButtonDown("HeavyAttack"))
@@ -111,6 +122,6 @@ public class Player : PhysicsObject
         ////// Animation
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("VelocityX", Mathf.Abs(velocity.x / maxSpeed));
-        
+
     }
 }

@@ -118,13 +118,12 @@ public class Damageable : MonoBehaviour
         deathParticles.SetActive(true);
         deathParticles.transform.parent = transform.parent;
         yield return new WaitForSeconds(5f);
-        AppCommands.Instance.resetLevel();
-        // currentHealth = maxHealth;
-        // parent.transform.position = AppCommands.Instance.playerStart.position;
-        // parent.GetComponent<SpriteRenderer>().enabled = true;
-        // parent.GetComponent<Player>().enabled = true;
-        // deathParticles.SetActive(false);
-        // deathParticles.transform.parent = parent.transform;
+        currentHealth = maxHealth;
+        parent.transform.position = AppCommands.Instance.playerStart.position;
+        parent.GetComponent<SpriteRenderer>().enabled = true;
+        parent.GetComponent<Player>().enabled = true;
+        deathParticles.SetActive(false);
+        deathParticles.transform.parent = parent.transform;
         
     }
     public void increaseHealth(int amount)

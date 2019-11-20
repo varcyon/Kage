@@ -7,7 +7,9 @@ public class AppCommands : MonoBehaviour
 {
     bool gamePaused = false;
     public Transform playerStart;
-    [SerializeField] GameObject pauseMenu;   
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject weaponTrees;
+    [SerializeField] GameObject controlUI;
     void Awake()
     {
         MakeSingleton();
@@ -27,55 +29,56 @@ public class AppCommands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quit();
-        resetLevel();
+        
+        WeaponTrees();
         PauseMenu();
     }
-    void Quit()
+
+    public void QuitButton()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
+        Application.Quit();
+    }
+    public void PauseMenu()
+    {
+        if (Input.GetButtonDown("Start"))
         {
-            Application.Quit();
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+            if (gamePaused)
+            {
+                Time.timeScale = 1f;
+                gamePaused = false;
+                controlUI.gameObject.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                gamePaused = true;
+            }
         }
     }
 
-     public void QuitButton()
-    {
-            Application.Quit();
-    }
-    public void PauseMenu(){
-        if(Input.GetButtonDown("Start")){
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-            if(gamePaused){
-                Time.timeScale =1f;
-                gamePaused = false;
-            } else{
-                Time.timeScale =0f;
-                gamePaused = true;
-            }
-        }
-    }
-    public void PauseMenuButton(){
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-            if(gamePaused){
-                Time.timeScale =1f;
-                gamePaused = false;
-            } else{
-                Time.timeScale =0f;
-                gamePaused = true;
-            }
-        
-    }
-    public void resetLevel()
+    public void WeaponTrees()
     {
         if (Input.GetButtonDown("Select"))
         {
-            SceneManager.LoadScene("main");
+
+            weaponTrees.gameObject.SetActive(!weaponTrees.gameObject.activeSelf);
+            if (gamePaused)
+            {
+                Time.timeScale = 1f;
+                gamePaused = false;
+
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                gamePaused = true;
+            }
         }
     }
-    public void resetLevelButon()
+    public void resetLevel()
     {
-            SceneManager.LoadScene("main");
+        SceneManager.LoadScene("main");
     }
 
 }

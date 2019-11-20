@@ -26,8 +26,8 @@ public class PlayerUI : MonoBehaviour
 		healthBarWidthSmooth += (healthBarWidth - healthBarWidthSmooth) * Time.deltaTime * healthBarWidthEase;
 		healthBar.transform.localScale = new Vector2 (healthBarWidthSmooth, transform.localScale.y);
         
-        purgatoryWater.text = Player.Instance.GetComponent<Magic>().PurgatoryWater.ToString();
-        hellFire.text = Player.Instance.GetComponent<Magic>().HellFire.ToString();
-        heavenMetal.text = Player.Instance.GetComponent<Magic>().HeavenMetal.ToString();
+        purgatoryWater.text = Magic.Instance.PurgatoryWater.ToString();
+        hellFire.text = Magic.Instance.HellFire.ToString();
+        heavenMetal.text = Magic.Instance. HeavenMetal.ToString();
     }
 }
